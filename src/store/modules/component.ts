@@ -1,9 +1,15 @@
+import { ActionContext } from 'vuex'
 import { CommonAttrs } from '../../modal/Component'
 import { StyleAttrs } from '../../modal/RectShape'
+
+interface ComponentState {
+  curComponent?: CommonAttrs<StyleAttrs>
+  curComponentIndex?: string
+}
 /**
  * 组件持久化
  */
-const state = {
+const state: ComponentState = {
   curComponent: new CommonAttrs<StyleAttrs>(
     'rect-shape',
     '矩形',
@@ -33,21 +39,24 @@ const state = {
   curComponentIndex: ''
 }
 const getters = {
-  curComponent: (state: any) => {
+  curComponent: (state: ComponentState) => {
     return state.curComponent
   },
-  curComponentIndex: (state: any) => {
+  curComponentIndex: (state: ComponentState) => {
     return state.curComponentIndex
   }
 }
 const mutations = {
-  SET_CUR_COMPONENT: (state: any, { component, index }) => {
+  SET_CUR_COMPONENT: (state: ComponentState, { component, index }: any) => {
     state.curComponent = component
     state.curComponentIndex = index
   }
 }
 const actions = {
-  setCurComponent({ commit }, { component, index }) {
+  setCurComponent(
+    { commit }: ActionContext<ComponentState, any>,
+    { component, index }: any
+  ) {
     commit('SET_CUR_COMPONENT', { component, index })
   }
 }
