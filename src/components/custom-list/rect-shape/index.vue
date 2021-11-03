@@ -1,4 +1,4 @@
-<!-- 矩形容器 -->
+<!-- 矩形容器组件 -->
 <template>
   <div class="rect-shape"></div>
 </template>
@@ -15,7 +15,9 @@
         require: true
       }
     },
-    setup() {
+    setup(props) {
+      console.log('props.element:', props.element)
+
       return {}
     }
   })

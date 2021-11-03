@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default async function runAnimation($el, animations = []) {
   const play = (animation) =>
-    new Promise<void>((resolve) => {
+    new Promise((resolve) => {
       $el.classList.add(animation.value, 'animated')
       const removeAnimation = () => {
         $el.removeEventListener('animationend', removeAnimation)

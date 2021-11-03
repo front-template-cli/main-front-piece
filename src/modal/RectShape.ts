@@ -10,8 +10,10 @@ export class StyleAttrs extends CommonStyleAttts {
     fontSize: number,
     fontWeight: number,
     lineHeight: string,
+    left: number,
     letterSpacing: number,
     textAlign: string,
+    top: 0,
     color: string,
     borderColor: string,
     borderWidth: number,
@@ -21,7 +23,7 @@ export class StyleAttrs extends CommonStyleAttts {
     rotate: number,
     opacity: number
   ) {
-    super(rotate, opacity, width, height)
+    super(rotate, opacity, width, height, left, top)
     this.width = width
     this.height = height
     this.fontSize = fontSize
@@ -35,6 +37,8 @@ export class StyleAttrs extends CommonStyleAttts {
     this.borderWidth = borderWidth
     this.backgroundColor = backgroundColor
     this.verticalAlign = verticalAlign
+    this.left = left
+    this.top = top
   }
   fontSize: number // 字体大小
   fontWeight: number // 字重

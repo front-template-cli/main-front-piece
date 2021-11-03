@@ -1,4 +1,4 @@
-/* eslint-disable no-lonely-if */
+/* eslint-disable */
 import store from '../store'
 
 // 角度转弧度

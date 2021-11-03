@@ -9,6 +9,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "suppressImplicitAnyIndexErrors": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
@@ -32,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/utils/calculateComponentPositonAndSize.js", "src/utils/translate.js", "src/utils/runAnimation.js"  ],
   "exclude": [
     "node_modules"
   ]
