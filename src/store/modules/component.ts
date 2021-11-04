@@ -17,7 +17,7 @@ const state: ComponentState = {
     'rect-shape',
     '矩形',
     '',
-    0,
+    -1,
     '&nbsp;',
     new StyleAttrs(
       200,

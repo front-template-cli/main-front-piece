@@ -34,16 +34,14 @@
     setup() {
       const store = useStore()
       const handleDrop = (e: any) => {
-        console.log('e:', e.dataTransfer.getData('index'))
-
         e.preventDefault()
         e.stopPropagation()
         const index = e.dataTransfer.getData('index')
-        console.log('store.getters:', store.getters)
 
         const rectInfo = store.getters.editor.getBoundingClientRect()
         if (index) {
           const component = deepCopy(list[index])
+
           component.style.top = e.clientY - rectInfo.y
           component.style.left = e.clientX - rectInfo.x
           component.id = generateID()

@@ -101,17 +101,18 @@
         // 阻止向父组件冒泡
         e.stopPropagation()
         e.preventDefault()
-        // this.$store.commit('hideContextMenu')
+        store.dispatch('hideContextMenu')
       }
       /**
-       * 鼠标点击
+       * 组件点击
        */
       const handleMouseDownOnShape = (e: any) => {
-        store.dispatch('setComponentStatus')
+        store.dispatch('setComponentStatus', true)
+        console.warn('触发了！！！')
         if (
           props.element &&
-          props.element.component != 'v-text' &&
-          props.element.component != 'rect-shape'
+          props.element.component !== 'v-text' &&
+          props.element.component !== 'rect-shape'
         ) {
           e.preventDefault()
         }
@@ -260,7 +261,9 @@
         return false
       }
       const isActive = computed(() => {
-        return props.active || !props.element?.isLock
+        console.log('props.active:', props.active)
+        return props.active
+        // return props.active || !props.element?.isLock
       })
       const pointList: string[] = ['b', 'lb', 'l', 'lt', 't', 'rt', 'r', 'rb'] // 八个方向
       const initialAngle: { [key: string]: number } = {
@@ -337,5 +340,38 @@
   .shape {
     width: auto;
     height: auto;
+    position: absolute;
+    &:hover {
+      cursor: move;
+    }
+  }
+  .active {
+    outline: 1px solid #70c0ff;
+    user-select: none;
+  }
+  .shape-point {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #59c7f9;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .icon-xiangyouxuanzhuan {
+    position: absolute;
+    top: -34px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: grab;
+    color: #59c7f9;
+    font-size: 20px;
+    font-weight: 600;
+
+    &:active {
+      cursor: grabbing;
+    }
   }
 </style>

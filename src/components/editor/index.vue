@@ -60,7 +60,7 @@
         return result
       }
       const getComponentStyle = (style: CommonStyleAttts) => {
-        console.log('style:', style)
+        // console.log('style:', style)
 
         return getStyle(style, ['top', 'left', 'width', 'height', 'rotate'])
       }

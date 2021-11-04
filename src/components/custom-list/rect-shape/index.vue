@@ -15,9 +15,7 @@
         require: true
       }
     },
-    setup(props) {
-      console.log('props.element:', props.element)
-
+    setup() {
       return {}
     }
   })
