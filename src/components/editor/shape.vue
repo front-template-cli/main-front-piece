@@ -289,8 +289,50 @@
       /**
        * 旋转
        */
-      const handleRotate = (e: Event) => {
-        console.log(e)
+      const handleRotate = (e: MouseEvent) => {
+        store.dispatch('setComponentStatus', true)
+        // 禁止事件冒泡
+        e.preventDefault()
+        e.stopPropagation()
+        // 初始坐标和初始角度
+
+        const pos = { ...props.defaultStyle }
+        console.log('props.defaultStyle:', pos.rotate)
+
+        const startY = e.clientY
+        const startX = e.clientX
+        const startRotate = pos.rotate || 0
+        // 获取元素中心点位置
+        const rect: DOMRect | any =
+          e.target && (e.target as HTMLElement).getBoundingClientRect()
+        const centerX = rect.left + rect.width / 2
+        const centerY = rect.top + rect.height / 2
+        // 旋转前的角度
+        const rotateDegreeBefore =
+          Math.atan2(startY - centerY, startX - centerX) / (Math.PI / 180)
+        let hasMove = false
+        const move = (moveEvent: MouseEvent) => {
+          hasMove = true
+          const curX = moveEvent.clientX
+          const curY = moveEvent.clientY
+          // 旋转后的角度
+          const rotateDegreeAfter =
+            Math.atan2(curY - centerY, curX - centerX) / (Math.PI / 180)
+          // 获取旋转的角度值
+          pos.rotate = startRotate + rotateDegreeAfter - rotateDegreeBefore
+          // 修改当前组件样式
+          store.dispatch('setShapeStyle', pos)
+        }
+
+        const up = () => {
+          hasMove && store.commit('recordSnapshot')
+          document.removeEventListener('mousemove', move)
+          document.removeEventListener('mouseup', up)
+          cursors.value = getCursor() // 根据旋转角度获取光标位置
+        }
+
+        document.addEventListener('mousemove', move)
+        document.addEventListener('mouseup', up)
       }
       /**
        * 光点的样式

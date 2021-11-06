@@ -152,6 +152,7 @@
     "vue/html-comment-indent": "error",
     "vue/html-end-tags": "error",
     "@typescript-eslint/no-var-requires": 0,
-    "no-constant-condition": ["error", { "checkLoops": false }]
+    "no-constant-condition": ["error", { "checkLoops": false }],
+    "no-debugger":"off"
   }
 }
