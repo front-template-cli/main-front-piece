@@ -1,7 +1,10 @@
 {
-  "name": "main-front-piece",
-  "version": "0.1.0",
-  "private": true,
+  "name": "<%=name%>",
+  "version": "<%=version%>",
+  "private": "<%=private%>",
+  "author": "<%=author%>",
+  "description": "<%=description%>",
+  "license": "<%=license%>",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build-fix": "vue-cli-service build --mode development-fix",
