@@ -33,10 +33,11 @@
     },
     setup() {
       const store = useStore()
-      const handleDrop = (e: any) => {
+      const handleDrop = (e: DragEvent) => {
         e.preventDefault()
         e.stopPropagation()
-        const index = e.dataTransfer.getData('index')
+        const index = e.dataTransfer && e.dataTransfer.getData('index')
+        console.log('index:', index)
 
         const rectInfo = store.getters.editor.getBoundingClientRect()
         if (index) {
@@ -51,9 +52,11 @@
           store.commit('recordSnapshot')
         }
       }
-      const handleDragOver = (e: any) => {
+      const handleDragOver = (e: DragEvent) => {
         e.preventDefault()
-        e.dataTransfer.dropEffect = 'copy'
+        if (e.dataTransfer) {
+          e.dataTransfer.dropEffect = 'copy'
+        }
       }
       const handleMouseDown = () => {
         store.dispatch('setComponentStatus', false)
