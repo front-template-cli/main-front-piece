@@ -33,7 +33,7 @@ export const createStorage = ({
      * @param {*} value 缓存值
      * @param expire
      */
-    set(expire: number | null = DEFAULT_CACHE_TIME, key: string, value: any) {
+    set(key: string, value: any, expire: number | null = DEFAULT_CACHE_TIME) {
       const stringData = JSON.stringify({
         expire: expire !== null ? new Date().getTime() + expire * 1000 : null,
         value

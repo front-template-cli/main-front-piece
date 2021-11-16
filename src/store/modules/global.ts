@@ -1,6 +1,6 @@
 import { ActionContext } from 'vuex'
 
-class GlobalState {
+export class GlobalState {
   public loading?: boolean = false
   public loadingText?: string = 'Loading...'
 }
