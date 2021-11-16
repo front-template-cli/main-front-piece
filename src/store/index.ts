@@ -20,5 +20,6 @@ const plugins = [
 export default createStore({
   modules: {
     global
-  }
+  },
+  plugins
 })

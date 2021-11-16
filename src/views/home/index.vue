@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue'
+  import { defineComponent, onMounted } from 'vue'
   import { Button } from 'ant-design-vue'
   import { getApi } from '../../api/api-method'
   export default defineComponent({
@@ -14,13 +14,12 @@
       const handleGetApi = () => {
         getApi()
       }
+      onMounted(() => {
+        document.dispatchEvent(new Event('render-event'))
+      })
       return {
         handleGetApi
       }
     }
   })
 </script>
-<style lang="less" scoped>
-  .page {
-  }
-</style>
