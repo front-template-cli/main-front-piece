@@ -1,14 +1,5 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/home/index.vue'
-
-const routes: Array<RouteRecordRaw> = [
-  {
-    component: Home,
-    name: 'Home',
-    path: '/'
-  }
-]
-
+import { createRouter, createWebHistory } from 'vue-router'
+import { routes } from './routes'
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
