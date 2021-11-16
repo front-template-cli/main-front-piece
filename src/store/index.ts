@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
-import editor from './modules/editor'
+import global from './modules/global'
 export default createStore({
   modules: {
-    editor
+    global
   }
 })
